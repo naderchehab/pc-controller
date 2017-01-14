@@ -1,0 +1,24 @@
+{
+  "name": "pc-controller",
+  "version": "1.0.0",
+  "description": "PC Controller",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "errorhandler": "^1.5.0",
+    "express": "^4.14.0",
+    "node-windows": "^0.1.12"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0"
+  },
+  "scripts": {
+    "start": "node src/server/index.js"
+  },
+  "author": "Nader Chehab",
+  "license": "ISC"
+}
