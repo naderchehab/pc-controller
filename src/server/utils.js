@@ -10,7 +10,9 @@ function runCommand(cmd) {
       }
       if (stderr) {
         console.log('stderr', stderr);
-        reject();
+      }
+      if (stdout) {
+        console.log('stdout', stdout);
       }
       resolve();
     });

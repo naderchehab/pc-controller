@@ -4,6 +4,7 @@ const utils = require('./utils');
 
 const workoutDataFile = path.join(__dirname, 'workoutData.txt');
 
+const vlcDir = 'D:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe';
 const workoutDir = 'D:\\Google Drive\\Workout\\Insanity MAX 30\\Month 2\\';
 
 const workouts = [
@@ -46,7 +47,7 @@ function getWorkoutIndex() {
 
 function startWorkoutIndex(workoutIndex) {
   return new Promise((resolve) => {
-    const cmd = `"${workoutDir}${workouts[workoutIndex]}"`;
+    const cmd = `"${vlcDir}" "${workoutDir}${workouts[workoutIndex]}"`;
     utils.runCommand(cmd).then(() => resolve(workoutIndex));
   });
 }
