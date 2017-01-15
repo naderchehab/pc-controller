@@ -59,15 +59,6 @@ function startWorkout() {
     writeNextWorkoutIndex,
   ].reduce((p, fn) => p.then(fn), Promise.resolve(0));
 }
-
-function stopWorkout(workoutIndex) {
-  return new Promise((resolve) => {
-    const cmd = 'TASKKILL /IM vlc.exe';
-    utils.runCommand(cmd).then(() => resolve(workoutIndex));
-  });
-}
-
 module.exports = {
   startWorkout,
-  stopWorkout,
 };

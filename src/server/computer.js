@@ -18,8 +18,16 @@ function unmuteSound() {
   return utils.runCommand(`"${nircmd}" mutesysvolume 0`);
 }
 
+function closeVlc(workoutIndex) {
+  return new Promise((resolve) => {
+    const cmd = 'TASKKILL /IM vlc.exe';
+    utils.runCommand(cmd).then(() => resolve(workoutIndex));
+  });
+}
+
 module.exports = {
   shutdownComputer,
   muteSound,
   unmuteSound,
+  closeVlc,
 };
