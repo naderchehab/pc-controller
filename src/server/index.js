@@ -11,7 +11,7 @@ const port = parseInt(process.env.PORT, 10) || 8000;
 
 app.use(bodyParser.json());
 
-app.get('/pc', (req, res) => res.send('Hello!'));
+app.get('/pc', (req, res) => res.send('Hello! PC Controller Ready.'));
 
 app.post('/pc/start-workout', utils.authenticate(), (req, res) =>
   workout.startWorkout().then(() => res.send('Workout started!')));
@@ -30,6 +30,12 @@ app.post('/pc/shutdown-computer', utils.authenticate(), (req, res) =>
 
 app.post('/pc/web-search/:searchTerm', utils.authenticate(), (req, res) =>
   web.searchFor(req.params.searchTerm).then(() => res.send('Web search performed!')));
+
+app.post('/pc/open-site/:searchTerm', utils.authenticate(), (req, res) =>
+  web.openSite(req.params.searchTerm).then(() => res.send('Site opened!')));
+
+app.post('/pc/open-gmail', utils.authenticate(), (req, res) =>
+  web.openGmail().then(() => res.send('Gmail opened!')));
 
 
 app.use(errorHandler({
