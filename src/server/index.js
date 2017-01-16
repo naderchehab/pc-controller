@@ -25,6 +25,21 @@ app.post('/pc/mute-sound', utils.authenticate(), (req, res) =>
 app.post('/pc/unmute-sound', utils.authenticate(), (req, res) =>
   computer.unmuteSound().then(() => res.send('Sound unmuted!')));
 
+app.post('/pc/increase-volume', utils.authenticate(), (req, res) =>
+  computer.increaseVolume().then(() => res.send('Volume increased!')));
+
+app.post('/pc/decrease-volume', utils.authenticate(), (req, res) =>
+  computer.decreaseVolume().then(() => res.send('Volume decreased!')));
+
+app.post('/pc/set-volume/:volPercent', utils.authenticate(), (req, res) =>
+  computer.setVolume(req.params.volPercent).then(() => res.send(`Volume set to ${req.params.volPercent}!`)));
+
+app.post('/pc/lock-computer', utils.authenticate(), (req, res) =>
+  computer.lockComputer().then(() => res.send('Computer locked!')));
+
+app.post('/pc/hibernate-computer', utils.authenticate(), (req, res) =>
+  computer.hibernateComputer().then(() => res.send('Computer hibernated!')));
+
 app.post('/pc/shutdown-computer', utils.authenticate(), (req, res) =>
   computer.shutdownComputer().then(() => res.send('Computer shutdown!')));
 
