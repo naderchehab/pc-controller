@@ -52,6 +52,12 @@ function lockComputer() {
   const lockCommand = 'rundll32 user32.dll, LockWorkStation';
   return utils.runCommand(lockCommand);
 }
+
+function screenGrab() {
+  console.log('Grabbing screen...');
+  return utils.runCommand(`"${nircmd}" savescreenshot screen1.png`);
+}
+
 module.exports = {
   lockComputer,
   hibernateComputer,
@@ -62,4 +68,5 @@ module.exports = {
   decreaseVolume,
   setVolume,
   closeVlc,
+  screenGrab,
 };

@@ -4,6 +4,7 @@ const errorHandler = require('errorhandler');
 const workout = require('./workout');
 const computer = require('./computer');
 const web = require('./web');
+const automation = require('./automation');
 const utils = require('./utils');
 
 const app = express();
@@ -52,6 +53,11 @@ app.post('/pc/open-site/:searchTerm', utils.authenticate(), (req, res) =>
 app.post('/pc/open-gmail', utils.authenticate(), (req, res) =>
   web.openGmail().then(() => res.send('Gmail opened!')));
 
+app.post('/pc/type/:text', utils.authenticate(), (req, res) =>
+  automation.type(req.params.text).then(() => res.send(`Typed text: ${req.params.text}`)));
+
+app.post('/pc/press/:key', utils.authenticate(), (req, res) =>
+  automation.press(req.params.key).then(() => res.send(`Pressed key: ${req.params.key}`)));
 
 app.use(errorHandler({
   dumpExceptions: true,
